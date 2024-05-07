@@ -85,6 +85,7 @@ function(generate_bindings_for_kernels)
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     OUTPUT_STRIP_TRAILING_WHITESPACE
   )
+  file(GLOB_RECURSE _torchgen_srcs "${site-packages-out}/torchgen/*.py")
   set(_gen_command
       "${PYTHON_EXECUTABLE}" -m torchgen.gen_executorch
       --source-path=${EXECUTORCH_ROOT}/codegen --install-dir=${_out_dir}
@@ -113,7 +114,7 @@ function(generate_bindings_for_kernels)
     OUTPUT ${_gen_command_sources}
     COMMAND ${_gen_command}
     DEPENDS ${_oplist_yaml} ${GEN_CUSTOM_OPS_YAML} ${GEN_FUNCTIONS_YAML}
-            ${_codegen_templates}
+            ${_codegen_templates} ${_torchgen_srcs}
     WORKING_DIRECTORY ${EXECUTORCH_ROOT}
   )
   # Make generated file list available in parent scope
