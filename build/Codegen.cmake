@@ -113,7 +113,7 @@ function(generate_bindings_for_kernels)
     OUTPUT ${_gen_command_sources}
     COMMAND ${_gen_command}
     DEPENDS ${_oplist_yaml} ${GEN_CUSTOM_OPS_YAML} ${GEN_FUNCTIONS_YAML}
-            ${_codegen_templates} ${_torchgen_srcs}
+            ${_codegen_templates}
     WORKING_DIRECTORY ${EXECUTORCH_ROOT}
   )
   # Make generated file list available in parent scope
