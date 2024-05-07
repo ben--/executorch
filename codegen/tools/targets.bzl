@@ -85,8 +85,8 @@ def define_common_targets(is_fbcode = False):
         visibility = [
             "//executorch/...",
         ],
-        external_deps = [
-            "gen-oplist-lib",
+        deps = [
+            ":gen_oplist_lib",
         ],
     )
 
@@ -123,9 +123,10 @@ def define_common_targets(is_fbcode = False):
         srcs = ["gen_selected_op_variants.py"],
         base_module = "executorch.codegen.tools",
         visibility = ["//executorch/..."],
-        external_deps = [
-            "gen-oplist-lib",
+        deps = [
+            "fbsource//third-party/pypi/pyyaml:pyyaml",
         ],
+        external_deps = ["torchgen"],
     )
 
     runtime.python_binary(

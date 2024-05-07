@@ -10,7 +10,7 @@ import os
 import sys
 from typing import Any, List
 
-from tools.code_analyzer import gen_oplist
+import executorch.codegen.tools.gen_oplist as gen_oplist
 
 
 def main(argv: List[Any]) -> None:
